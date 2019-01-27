@@ -1,0 +1,51 @@
+<% include partials/header %>
+<div class="jumbotron">
+  <h1>Pokédex <img src="/img/pokeball.png"></h1>
+  <hr>
+  <p>Welcome! Here is your online resource for Pokémon-related info! (Gen-1 only -- the only gen that matters cuz I'm old.)</p>
+</div>
+
+<div class="container">
+  <div>
+    <a href="/pokedex">View Pokémon</a>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <h3>Pokémon types</h3>
+      <div class="types">
+        <ol>
+          <li>fire</li>
+          <li>water</li>
+          <li>ground</li>
+          <li>fighting</li>
+          <li>electric</li>
+          <li>ghost</li>
+          <li>rock</li>
+          <li>dragon</li>
+          <li>ice</li>
+          <li>normal</li>
+          <li>grass</li>
+          <li>poison</li>
+          <li>flying</li>
+          <li>psychic</li>
+          <li>bug</li>
+        </ol>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="submission">
+        <form>
+          Pokémon name:
+          <input type="text" placeholder="name"><br>
+          Pokémon type:
+          <input type="text" placeholder="type"><br>
+          Image of Pokémon:
+          <input type="text" placeholder="image"><br>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% include partials/footer %>
