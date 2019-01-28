@@ -1,6 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+//import libraries
+const express = require('express'),
+      mongoose = require('mongoose'),
+      bodyParser = require('body-parser');
+
+//import pokemon model
+const Pokemon = require('./models/Pokemon');
 
 //start express app
 const app = express();
@@ -8,12 +12,22 @@ const app = express();
 //set public directory
 app.use(express.static(__dirname + '/public'));
 
+//use body parser
+app.use(bodyParser.urlencoded({extended: true}));
+// app.use(bodyParser.json());
+
+//connect mongoose to mongo
+mongoose
+  .connect('mongodb://localhost:27017/pokedex', {useNewUrlParser: true})
+  .then(console.log('connected to MongoDB'))
+  .catch(err => console.log(err));
+
+
 //set view engine
 app.set('view engine', 'ejs');
 
-//connect mongoose to mongo
-mongoose.connect('mongodb://localhost:27017/pokedex', {useNewUrlParser: true});
 
+//GET routes
 //index/home page
 app.get('/',(req,res) => {
   res.render('index');
@@ -21,9 +35,45 @@ app.get('/',(req,res) => {
 
 //list of pokemon
 app.get('/pokedex',(req,res) => {
-  res.render('pokedex');
+  Pokemon.find({},(err,pokemon) => {
+    if(err){
+      console.log(err);
+    } else {
+      res.render('pokedex', {pokemon: pokemon});
+    }
+  })
 });
+
+//new pokemon creation page
+app.get('/pokedex/new',(req,res) => {
+  res.render('new');
+});
+
+
+//POST routes
+//new pokedex entry
+app.post('/pokedex',(req,res) => {
+  Pokemon.create(req.body.pokemon,(err,pokemon) => {
+    if(err) {
+      console.log(err);
+    } else{
+      res.redirect('/pokedex');
+    }
+  })
+  // console.log(req.body.pokemon);
+});
+
 
 port = process.env.PORT || 5000;
 
 app.listen(port, () => console.log(`server started on ${port}`));
+
+//FIGURED THINGS OUT:
+// DB name: pokedex
+// collection name: pokemons
+// body-parser urlencoded true for now
+
+// TODO:
+// change type input from text to dropdown
+// create edit page and allow editing/deleting
+// create pages for each type

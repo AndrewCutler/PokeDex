@@ -5,20 +5,16 @@ const Schema = mongoose.Schema;
 const PokemonSchema = new Schema({
   name: {
     type: String,
-    required: true
-  },
+    required: true },
   type: {
     type: String,
-    required: true
-  },
+    required: true},
   image: {
     type: String,
-    required: true
-  },
+    required: true },
   description: {
     type: String,
-    required: true
-  }
+    required: true }
 });
 
-module.exports = Pokemon = mongoose.model('pokemon',PokemonSchema);
+module.exports = Pokemon = mongoose.model('Pokemon',PokemonSchema);

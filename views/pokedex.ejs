@@ -1,5 +1,16 @@
 <% include partials/header %>
 
-<%=   %>
 
-<% include partials/header %>
+<div><a href="/">Home</a></div>
+
+<% pokemon.forEach(function(pokemon) {  %>
+  <div class="container">
+    <h2><%= pokemon.name %></h2>
+    <h5>Type: <%= pokemon.type %></h5>
+    <img src="<%= pokemon.image %>">
+    <p><%= pokemon.description %></p>
+    <a href="/pokedex/edit/:id" class="btn btn-danger">Edit</a>
+  </div>
+<% }) %>
+
+<% include partials/footer %>
