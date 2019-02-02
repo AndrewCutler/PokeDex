@@ -1,0 +1,12 @@
+<% include partials/header.ejs %>
+
+<div class="container">
+  <h2><%= pokemon.name %></h2>
+  <h5>Type: <%= pokemon.type %></h5>
+  <img src="<%= pokemon.image %>">
+  <p><%= pokemon.description %></p>
+  <a href="" class="btn btn-primary">Update</a>
+  <a href="" class="btn btn-danger">Delete</a>
+</div>
+
+<% include partials/footer.ejs %>

@@ -9,7 +9,7 @@
     <h5>Type: <%= pokemon.type %></h5>
     <img src="<%= pokemon.image %>">
     <p><%= pokemon.description %></p>
-    <a href="/pokedex/edit/:id" class="btn btn-danger">Edit</a>
+    <a href="/pokedex/<%= pokemon._id %>/edit" class="btn btn-danger">Edit</a>
   </div>
 <% }) %>
 

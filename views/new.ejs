@@ -2,18 +2,37 @@
 
 <div class="container">
   <form action="/pokedex" method="post">
+    <!-- input for pokemon's name -->
     <div class="form-group">
       <label for="name">Pokémon name:</label>
       <input type="text" class="form-control" placeholder="name" name="pokemon[name]">
     </div>
+    <!-- input for pokemon's type -->
     <div class="form-group">
-      <label for="type">Pokémon type:</label>
-      <input type="text" class="form-control" placeholder="type" name="pokemon[type]">
+      <label for="pokemon[type]">Pokémon type:</label>
+      <select class="form-control" name="pokemon[type]">
+        <option value="">-- Choose type --</option>
+        <option value="grass">Grass</option>
+        <option value="water">Water</option>
+        <option value="rock">Rock</option>
+        <option value="flying">Flying</option>
+        <option value="electric">Electric</option>
+        <option value="ground">Ground</option>
+        <option value="fighting">Fighting</option>
+        <option value="bug">Bug</option>
+        <option value="psychic">Psychic</option>
+        <option value="ghost">Ghost</option>
+        <option value="normal">Normal</option>
+        <option value="ice">ice</option>
+        <option value="poison">Poison</option>
+      </select>
     </div>
+    <!-- input for image of pokemon -->
     <div class="form-group">
       <label for="name">Pokémon image url:</label>
       <input type="text" class="form-control" placeholder="image" name="pokemon[image]">
     </div>
+    <!-- input for pokedex entry decription of pokemon -->
     <div class="form-group">
       <label for="description">Pokémon description:</label>
       <input type="text" class="form-control" placeholder="description" name="pokemon[description]">
