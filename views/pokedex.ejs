@@ -1,15 +1,15 @@
 <% include partials/header %>
 
-
-<div><a href="/">Home</a></div>
-
 <% pokemon.forEach(function(pokemon) {  %>
   <div class="container">
-    <h2><%= pokemon.name %></h2>
+    <h2><a href="/pokedex/<%= pokemon.id %>" alt="<%= pokemon.name %>"><%= pokemon.name %></a></h2>
     <h5>Type: <%= pokemon.type %></h5>
     <img src="<%= pokemon.image %>">
     <p><%= pokemon.description %></p>
-    <a href="/pokedex/<%= pokemon._id %>/edit" class="btn btn-danger">Edit</a>
+    <a href="/pokedex/<%= pokemon._id %>/edit" class="btn btn-primary">Edit</a>
+    <form method="post" action="/pokedex/<%= pokemon._id %>?_method=delete">
+      <button class="btn btn-danger">Delete</button>
+    </form>
   </div>
 <% }) %>
 

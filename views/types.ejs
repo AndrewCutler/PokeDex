@@ -1,0 +1,14 @@
+<% include partials/header %>
+
+<h1><%= pokemon[0].type.charAt(0).toUpperCase() + pokemon[0].type.slice(1) %></h1>
+<br/>
+<% pokemon.forEach(function (pokemon){ %>
+  <div>
+    <h4><a href="/pokedex/<%= pokemon.id %>" alt="<%= pokemon.name %>"><%= pokemon.name %></a></h4>
+    <img src="<%= pokemon.image %>" alt="<%= pokemon.name %>">
+    <p> <%= pokemon.description %></p>
+    <hr>
+  </div>
+<% }) %>
+
+<% include partials/footer %>

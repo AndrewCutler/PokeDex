@@ -1,11 +1,39 @@
 <% include partials/header.ejs %>
 
 <div class="container">
-  <h2><%= pokemon.name %></h2>
-  <h5>Type: <%= pokemon.type %></h5>
-  <img src="<%= pokemon.image %>">
-  <p><%= pokemon.description %></p>
-  <a href="" class="btn btn-primary">Update</a>
+  <!-- name -->
+  <h4>
+    Name: <input type="text" value="<%= pokemon.name %>">
+  </h4>
+  <h4>
+    Type:
+    <!-- <label for="pokemon[type]">Pokémon type:</label> -->
+    <select class="form-control" name="pokemon[type]">
+      <option value="grass">Grass</option>
+      <option value="water">Water</option>
+      <option value="rock">Rock</option>
+      <option value="flying">Flying</option>
+      <option value="electric">Electric</option>
+      <option value="ground">Ground</option>
+      <option value="fighting">Fighting</option>
+      <option value="bug">Bug</option>
+      <option value="psychic">Psychic</option>
+      <option value="ghost">Ghost</option>
+      <option value="normal">Normal</option>
+      <option value="ice">ice</option>
+      <option value="poison">Poison</option>
+    </select>
+  </h4>
+  <h4>
+    <img src="<%= pokemon.image %>">
+    <p>Image source: <input type="text" name="pokemon[image]"></p>
+  </h4>
+  <br/>
+  <h4>
+    Description:
+    <p><textarea rows="6" cols="42"><%= pokemon.description %></textarea></p>
+  </h4>
+  <a href="/pokedex/<%= pokemon._id %>?_method=PUT" method="post" class="btn btn-primary">Update</a>
   <a href="" class="btn btn-danger">Delete</a>
 </div>
 
