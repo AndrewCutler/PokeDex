@@ -13,6 +13,9 @@ const app = express();
 //set public directory
 app.use(express.static(__dirname + '/public'));
 
+//use method override
+app.use(methodOverride("_method"));
+
 //use body parser
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -132,5 +135,5 @@ app.listen(port, () => console.log(`server started on ${port}`));
 
 // TODO:
 // organize pokedex index page
-// add delete route
-// create pages for each type, showing weaknesses/strengths
+// add confirmation button for delete
+// show weaknesses/strengths

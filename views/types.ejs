@@ -1,6 +1,10 @@
 <% include partials/header %>
 
-<h1><%= pokemon[0].type.charAt(0).toUpperCase() + pokemon[0].type.slice(1) %></h1>
+<h1>
+  <% if (pokemon.length > 0) { %>
+  <%=  pokemon[0].type.charAt(0).toUpperCase() + pokemon[0].type.slice(1) %>
+  <% } %>
+</h1>
 <br/>
 <% pokemon.forEach(function (pokemon){ %>
   <div>
