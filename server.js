@@ -5,7 +5,8 @@ const express = require('express'),
       methodOverride = require('method-override');
 
 //import routes
-const pokemonRoutes = require('./routes/pokemon');
+const pokemonRoutes = require('./routes/pokemon'),
+      indexRoutes = require('./routes/index');
 
 //import pokemon model
 const Pokemon = require('./models/Pokemon');
