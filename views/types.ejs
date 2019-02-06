@@ -1,18 +1,86 @@
 <% include partials/header %>
 
-<h1>
-  <% if (pokemon.length > 0) { %>
-  <%=  pokemon[0].type.charAt(0).toUpperCase() + pokemon[0].type.slice(1) %>
-  <% } %>
-</h1>
-<br/>
-<% pokemon.forEach(function (pokemon){ %>
-  <div>
-    <h4><a href="/pokedex/<%= pokemon.id %>" alt="<%= pokemon.name %>"><%= pokemon.name %></a></h4>
-    <img src="<%= pokemon.image %>" alt="<%= pokemon.name %>">
-    <p> <%= pokemon.description %></p>
-    <hr>
+<h3>Pokémon types</h3>
+<div class="types">
+  <!-- attempting grid -->
+  <div class="row">
+    <% for (var i = 0; i < 4; i++) { %>
+    <div class="col-sm-4">
+      <a href="/<%= types[i].name %>" class="typeName"><%= types[i].name %></a>
+      <p>
+        <span class="damage double">2×</span> 
+        <%= types[i].double.join(', ') %>
+      </p>
+      <p>
+        <span class="damage half">½×</span> 
+        <%= types[i].half.join(', ') %>
+      </p>
+      <% if (types[i].zero) { %>
+        <p>
+          <span class="damage zero">0×</span> 
+          <%= types[i].zero %>
+        </p>
+        <% } %>
+    </div>
+    <% } %>
+    <% for (var i = 4; i < 8; i++) { %>
+      <div class="col-sm-4">
+        <a href="/<%= types[i].name %>" class="typeName"><%= types[i].name %></a>
+        <p>
+          <span class="damage double">2×</span> 
+          <%= types[i].double.join(', ') %>
+        </p>
+        <p>
+          <span class="damage half">½×</span> 
+          <%= types[i].half.join(', ') %>
+        </p>
+        <% if (types[i].zero) { %>
+          <p>
+            <span class="damage zero">0×</span> 
+            <%= types[i].zero %>
+          </p>
+        <% } %>
+      </div>
+    <% } %>
+    <% for (var i = 8; i < 12; i++) { %>
+      <div class="col-sm-4">
+        <a href="/<%= types[i].name %>" class="typeName"><%= types[i].name %></a>
+        <p>
+          <span class="damage double">2×</span> 
+          <%= types[i].double.join(', ') %>
+        </p>
+        <p>
+          <span class="damage half">½×</span> 
+          <%= types[i].half.join(', ') %>
+        </p>
+        <% if (types[i].zero) { %>
+          <p>
+            <span class="damage zero">0×</span> 
+            <%= types[i].zero %>
+          </p>
+        <% } %>
+      </div>
+    <% } %>
+    <% for (var i = 12; i < 15; i++) { %>
+      <div class="col-sm-4">
+        <a href="/<%= types[i].name %>" class="typeName"><%= types[i].name %></a>
+        <p>
+          <span class="damage double">2×</span> 
+          <%= types[i].double.join(', ') %>
+        </p>
+        <p>
+          <span class="damage half">½×</span> 
+          <%= types[i].half.join(', ') %>
+        </p>
+        <% if (types[i].zero) { %>
+          <p>
+            <span class="damage zero">0×</span> 
+            <%= types[i].zero %>
+          </p>
+        <% } %>
+      </div>
+    <% } %>
   </div>
-<% }) %>
+</div>
 
 <% include partials/footer %>

@@ -2,6 +2,22 @@ body {
   margin: 0;
 }
 
+/* navbar */
+
+.navbar {
+  background: white;
+}
+
+.navbar li:hover {
+  background: rgb(228, 220, 220, 0.5);
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+/* landing page */
+
 .jumbotron {
   margin-top: 8px;
   border: 1px solid gray;
@@ -23,4 +39,32 @@ img {
 
 .submission {
   margin-top: 10%;
+}
+
+/* styling for types page */
+
+.damage {
+  background: rgb(185, 59, 59);
+  border-radius: 4px;
+  color: white;
+  padding: 4px;
+}
+
+.half {
+  background: rgb(166, 185, 59);
+}
+
+.zero {
+  background: rgb(75, 78, 57);
+}
+
+.typeName {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.types .row div {
+  border: 1px solid rgb(187, 183, 183, 0.4);
+  border-radius: 2px;
+  min-height: 130px;
 }

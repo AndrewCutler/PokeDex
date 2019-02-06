@@ -7,7 +7,7 @@
     <img src="<%= pokemon.image %>">
     <p><%= pokemon.description %></p>
     <form method="post" action="/pokedex/<%= pokemon._id %>?_method=delete">
-    <a href="/pokedex/<%= pokemon._id %>/edit" class="btn btn-primary">Edit</a>
+      <a href="/pokedex/<%= pokemon._id %>/edit" class="btn btn-primary">Edit</a>
       <button class="btn btn-danger" >Delete</button>
     </form>
   </div>

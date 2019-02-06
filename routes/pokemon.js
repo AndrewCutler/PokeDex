@@ -1,5 +1,16 @@
 const express = require('express'),
-      router = express.Router();
+      router = express.Router(),
+      methodOverride = require('method-override'),
+      bodyParser = require('body-parser');
+
+//import pokemon model
+const Pokemon = require('../models/Pokemon');
+
+//use method override
+router.use(methodOverride("_method"));
+
+//use body parser
+router.use(bodyParser.urlencoded({extended: true}));
 
 //list of pokemon
 router.get('/pokedex',(req,res) => {
@@ -28,8 +39,6 @@ router.get('/pokedex/:id',(req,res) => {
     }
   });
 });
-
-
 
 //POST routes
 //new pokedex entry
@@ -62,10 +71,10 @@ router.get('/pokedex/:id/edit',(req,res) => {
 router.put('/pokedex/:id',(req,res) => {
   Pokemon.findByIdAndUpdate(req.params.id, 
       req.body.pokemon, 
-      (err, updatedPokemon) => {
+      function (err, updatedPokemon) {
         if (err) {
           console.log(err);
-          res.redirect('pokedex');
+          res.redirect('/pokedex');
         } else {
           res.redirect('/pokedex/' + req.params.id);
         }
