@@ -20,7 +20,7 @@ router.get('/types', (req,res) => {
 });
 
 //SHOW by type
-router.get('/:type',(req,res) => {
+router.get('/types/:type',(req,res) => {
   const type = req.params.type;
   Pokemon.find({ type: type },(err,pokemon) => {
     if (err) {
