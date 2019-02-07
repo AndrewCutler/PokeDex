@@ -1,11 +1,9 @@
 //import libraries
 const express = require('express'),
-      mongoose = require('mongoose');
-      // bodyParser = require('body-parser'),
-      // methodOverride = require('method-override');
-
-//import types file
-const types = require('./public/types');
+      mongoose = require('mongoose'),
+      passport = require('passport'),
+      LocalStrategy = require('passport-local'),
+      session = require('express-session');
 
 //import routes
 const pokemonRoutes = require('./routes/pokemon'),
@@ -18,14 +16,29 @@ const app = express();
 app.use(pokemonRoutes);
 app.use(indexRoutes);
 
+//initialize passport and session
+app.use(express.session({ secret: 'elissa' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+//set up local strategy
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: username }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
 //set public directory
 app.use(express.static(__dirname + '/public'));
-
-// //use method override
-// app.use(methodOverride("_method"));
-
-// //use body parser
-// app.use(bodyParser.urlencoded({extended: true}));
 
 //connect mongoose to mongo
 mongoose

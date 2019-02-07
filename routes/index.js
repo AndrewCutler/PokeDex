@@ -1,8 +1,11 @@
 const express = require('express'),
-      router = express.Router();
+      router = express.Router(),
+      passport = require('passport');
 
 //import pokemon model
 const Pokemon = require('../models/Pokemon');
+//import user model
+const User = require('../models/User');
 
 //import types file
 const types = require('../public/types');
@@ -22,12 +25,21 @@ router.get('/types', (req,res) => {
 //SHOW by type
 router.get('/types/:type',(req,res) => {
   const type = req.params.type;
-  Pokemon.find({ type: type },(err,pokemon) => {
+
+  //only render types that exist
+  const match = types.some(t => t.name === type);
+
+  Pokemon.find({ type: type }, (err,pokemon) => {
     if (err) {
       console.log(err);
       res.redirect('/');
     } else {
-      res.render('type', {pokemon: pokemon});
+      if (match) {
+        res.render('type', {pokemon: pokemon});
+      } else {
+        //if type in /types/:id doesn't exist, redirect to types
+        res.redirect('/types');
+      }
     }
   });
 });
@@ -37,9 +49,25 @@ router.get('/register',(req,res) => {
   res.render('register');
 });
 
+//POST registration page
+router.post('/register',(req,res) => {
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
+
+  console.log(user);
+});
+
 //get login page
 router.get('/login', (req,res) => {
   res.render('login');
 });
+
+//POST login route
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login' })
+);
 
 module.exports = router;
