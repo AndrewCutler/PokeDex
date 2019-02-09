@@ -3,6 +3,8 @@
 <h1>
   <% if (pokemon.length > 0) { %>
   <%=  pokemon[0].type.charAt(0).toUpperCase() + pokemon[0].type.slice(1) %>
+  <% } else { %>
+    No pokemon of this type yet!
   <% } %>
 </h1>
 <br/>

@@ -12,6 +12,13 @@ router.use(methodOverride("_method"));
 //use body parser
 router.use(bodyParser.urlencoded({extended: true}));
 
+//isLoggedIn middleware
+function isLoggedIn(req,res,next) {
+  if(req.isAuthenticated()) return next();
+  res.redirect('/authenticate');
+};
+
+
 //list of pokemon
 router.get('/pokedex',(req,res) => {
   Pokemon.find({},(err,pokemon) => {
@@ -24,7 +31,7 @@ router.get('/pokedex',(req,res) => {
 });
 
 //new pokemon creation page
-router.get('/pokedex/new',(req,res) => {
+router.get('/pokedex/new', isLoggedIn, (req,res) => {
   res.render('new');
 });
 
@@ -56,7 +63,7 @@ router.post('/pokedex',(req,res) => {
 
 // EDIT routes
 //show by id
-router.get('/pokedex/:id/edit',(req,res) => {
+router.get('/pokedex/:id/edit', isLoggedIn, (req,res) => {
   Pokemon.findById(req.params.id,(err, foundPokemon) => {
     if (err) {
       console.log(err);
@@ -82,7 +89,7 @@ router.put('/pokedex/:id',(req,res) => {
 });
 
 //DELETE entry
-router.delete('/pokedex/:id',(req,res) => {
+router.delete('/pokedex/:id', isLoggedIn, (req,res) => {
   Pokemon.findByIdAndRemove(req.params.id, function(err) {
     if (err) {
       console.log(err);

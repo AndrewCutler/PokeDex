@@ -19,7 +19,6 @@ router.get('/',(req,res) => {
 //types page
 router.get('/types', (req,res) => {
   res.render('types', {types: types});
-  // console.log(types[0])
 });
 
 //SHOW by type
@@ -56,7 +55,15 @@ router.post('/register',(req,res) => {
     password: req.body.password
   });
 
-  console.log(user);
+  User.create(user, (err,newUser) => {
+    if (err) {
+      console.log(err);
+      return res.render('register');
+    }
+    passport.authenticate('local')(req,res,() => {
+      res.redirect('/pokedex');
+    });
+  });
 });
 
 //get login page
@@ -69,5 +76,15 @@ router.post('/login', passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/login' })
 );
+
+router.get('/logout',(req,res) => {
+  req.logout();
+  res.redirect('/');
+});
+
+//login/register page
+router.get('/authenticate', (req,res) => {
+  res.render('authenticate');
+});
 
 module.exports = router;

@@ -1,12 +1,13 @@
 <% include partials/header %>
 
-<div class="container">
   <h1> <%= pokemon.name %> </h1>
   <h4> Type: <%= pokemon.type %> </h4>
   <img src="<%= pokemon.image %>" alt="<%= pokemon.name %>" style="width: 400px;">
   <br/>
   <br/>
   <p><%= pokemon.description %></p>
-</div>
+  <div class="">
+    <!-- strengths and weaknesses to go here -->
+  </div>
 
 <% include partials/footer %>
