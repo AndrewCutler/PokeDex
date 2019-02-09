@@ -1,5 +1,18 @@
 <% include partials/header %>
 
+<% if (invalidCredentials === "taken") { %>
+  <div class="alert alert-danger" role="alert">
+    An account with that username already exists.
+  </div>
+<% } %>
+
+<% if (invalidCredentials === "bad") { %>
+  <div class="alert alert-danger" role="alert">
+    Passwords must be at least 8 characters long.
+  </div>
+<% } %>
+
+
 <h2>Register</h2>
 
 <form action="/register" method="post">

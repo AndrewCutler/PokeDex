@@ -68,3 +68,11 @@ img {
   border-radius: 2px;
   min-height: 130px;
 }
+
+.form {
+  border: 1px solid gray;
+  margin: 8px;
+  border-radius: 12px;
+  padding: 0 12px 12px 12px;
+  background: rgba(240, 236, 236, 0.637);
+}

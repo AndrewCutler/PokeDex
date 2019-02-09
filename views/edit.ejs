@@ -1,7 +1,7 @@
 <% include partials/header.ejs %>
 
 <div class="container">
-  <form action="/pokedex/<%= pokemon._id %>?_method=put" method="post">
+  <form action="/pokedex/<%= pokemon._id %>?_method=put" method="post" id="update">
     <!-- name -->
     <h4>
       Name: <input type="text" value="<%= pokemon.name %>" name="pokemon[name]">
@@ -42,10 +42,10 @@
       Description:
       <p><textarea rows="6" cols="42" name="pokemon[description]"><%= pokemon.description %></textarea></p>
     </h4>
-    <button class="btn btn-primary">Update</button>
   </form>
-  <form action="/pokedex/<%= pokemon._id %>?_method=delete" method="post"></form>
-    <button class="btn btn-danger">Delete</button>
+  <form action="/pokedex/<%= pokemon._id %>?_method=delete" method="post" id="delete">
+    <button class="btn btn-primary" form="update">Update</button>
+    <button class="btn btn-danger" form="delete">Delete</button>
   </form>
 </div>
 

@@ -75,4 +75,3 @@ app.listen(port, () => console.log(`server started on ${port}`));
 // organize pokedex index page
 // add confirmation button for delete
 // show weaknesses/strengths
-// hash passwords

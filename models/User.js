@@ -7,6 +7,10 @@ const UserSchema = new mongoose.Schema({
   password: String
 });
 
+UserSchema.methods.isValidPassword = function(pw) {
+  return pw.length > 7;
+}
+
 UserSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', UserSchema);

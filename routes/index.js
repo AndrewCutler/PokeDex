@@ -45,25 +45,31 @@ router.get('/types/:type',(req,res) => {
 
 //get registration page
 router.get('/register',(req,res) => {
-  res.render('register');
+  res.render('register', {invalidCredentials: false});
 });
 
 //POST registration page
 router.post('/register',(req,res) => {
   const user = new User({
-    username: req.body.username,
-    password: req.body.password
+    username: req.body.username
   });
 
-  User.create(user, (err,newUser) => {
-    if (err) {
-      console.log(err);
-      return res.render('register');
-    }
-    passport.authenticate('local')(req,res,() => {
-      res.redirect('/pokedex');
+  //use register() rather than save() to create hashed pw
+  //and ensure username doesn't already exist
+  if (user.isValidPassword(req.body.password)) {
+    User.register(user, req.body.password, (err,newUser) => {
+      if (err) {
+        console.log(err);
+        return res.render('register', {invalidCredentials: "taken"});
+      }
+      passport.authenticate('local')(req,res,() => {
+        res.redirect('/pokedex');
+      });
     });
-  });
+  } else {
+    res.render('register', {invalidCredentials: "bad"})
+  }
+
 });
 
 //get login page
