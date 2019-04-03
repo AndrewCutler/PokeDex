@@ -11,7 +11,8 @@ Learn and practice back-end development with MongoDB/Mongoose and ExpressJS.
 
 ## Thanks to
 [Nintendo](www.nintendo.com)
+[PokemonDB](https://pokemondb.net/)
 
-##To-dos (if I ever get to them)
+## To-dos (if I ever get to them)
 * move from local MongoDB to hosted
 * remember what else I never got around to doing...
