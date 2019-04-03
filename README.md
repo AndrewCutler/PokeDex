@@ -1,15 +1,15 @@
-#PokeDex using MEN stack
+# PokeDex using MEN stack
 
-##Purpose
+## Purpose
 Learn and practice back-end development with MongoDB/Mongoose and ExpressJS.
 
-##Technologies and dependencies used
+## Technologies and dependencies used
 * [EJS](https://www.ejs.co/)
 * [Mongoose](https://mongoosejs.com/)
 * [Bootstrap](https://getbootstrap.com/)
 * [PassportJS](http://www.passportjs.org/)
 
-##Thanks to
+## Thanks to
 [Nintendo](www.nintendo.com)
 
 ##To-dos (if I ever get to them)
